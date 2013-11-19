@@ -1,0 +1,6 @@
+C:\Users\IRSA\henu\wangjing\FTPMonitor\LogLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\IRSA\henu\wangjing\FTPMonitor\LogLib\bin\Debug\LogLib.dll
+C:\Users\IRSA\henu\wangjing\FTPMonitor\LogLib\bin\Debug\LogLib.pdb
+C:\Users\IRSA\henu\wangjing\FTPMonitor\LogLib\bin\Debug\log4net.dll
+C:\Users\IRSA\henu\wangjing\FTPMonitor\LogLib\obj\Debug\LogLib.dll
+C:\Users\IRSA\henu\wangjing\FTPMonitor\LogLib\obj\Debug\LogLib.pdb
