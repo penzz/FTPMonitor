@@ -17,11 +17,11 @@ namespace FTPMonitor
         /// <summary>
         /// 新数据到达事件
         /// </summary>
-        public event Action<DataInfo> NewDataEvent;
+        //public event Action<DataInfo> NewDataEvent;
         /// <summary>
         /// 删除数据事件
         /// </summary>
-        public event Action<string> DeleteDataEvent;
+        //public event Action<string> DeleteDataEvent;
 
         private static DataOperate dataOperate = new DataOperate();
 

@@ -23,8 +23,6 @@ namespace FTPMonitor
 
         List<string> CurrentCopyFile;//保持当前正在推送的数据对象
 
-        long findCount, copyCount, existCount;//查找复制时统计找到、复制、存在的文件数
-
         double east, west, south, north;//东西南北 经纬度
         string monitorFolder, destFolder;//监控目录，目标目录
 
@@ -158,6 +156,7 @@ namespace FTPMonitor
             if (count < 0)
             {
                 MessageBox.Show("程序初始化出错，无法清空数据库：！");
+                ChangeCursor(Cursors.Default);
                 return;
             }
             //遍历文件夹将存在的数据设置存在
@@ -257,8 +256,6 @@ namespace FTPMonitor
             {
                 createTime = this.dtCreateTime.Text;
             }
-            copyCount = findCount = existCount = 0;
-            this.labelCopyCount.Text = this.labelFindCount.Text = this.labelExistCount.Text = "0";
             FileOperate fileOperate = new FileOperate(this.destFolder);
             fileOperate.ExecuteCopy(south.ToString(), north.ToString(), west.ToString(), east.ToString(), photoTime, createTime);
         }
@@ -268,11 +265,6 @@ namespace FTPMonitor
         /// <returns></returns>
         bool VerifyVariable()
         {
-            if (copyCount + existCount < findCount)
-            {
-                MessageBox.Show("系统正在进行上一次查找复制操作，请稍后！");
-                return false;
-            }
             destFolder = this.tbDestFolder.Text;
             if (destFolder == "")
             {
@@ -302,6 +294,5 @@ namespace FTPMonitor
             return true;
         }
         #endregion
-
     }
 }

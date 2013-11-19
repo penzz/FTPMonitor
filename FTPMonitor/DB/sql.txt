@@ -1,0 +1,26 @@
+﻿----------------2013-11-19-----------------
+
+CREATE TABLE [dbo].[DataInfo] (
+    [id]                NVARCHAR (40)  NOT NULL,
+    [name]              NVARCHAR (100) NULL,
+    [satellite]         NVARCHAR (20)  NULL,
+    [sensor]            NVARCHAR (20)  NULL,
+    [phototime]         NVARCHAR (10)  NULL,
+    [createtime]        DATETIME       NULL,
+    [centerlat]         FLOAT (53)     NULL,
+    [centerlon]         FLOAT (53)     NULL,
+    [rownum]            INT            NULL,
+    [colnum]            INT            NULL,
+    [fullpath]          NVARCHAR (MAX) NULL,
+    [photolongtime]     DATETIME       NULL,
+    [producttime]       DATETIME       NULL,
+    [sceneID]           NCHAR (10)     NULL,
+    [productID]         NCHAR (10)     NULL,
+    [orderid]           NVARCHAR (50)  NULL,
+    [ordercreatetime]   DATETIME       NULL,
+    [preprocesstime]    DATETIME       NULL,
+    [achiefeedbacktime] DATETIME       NULL,
+    [isexisted]         BIT            CONSTRAINT [DF_DataInfo_isexisted] DEFAULT ((1)) NULL,
+    CONSTRAINT [PK_DataInfo_1] PRIMARY KEY CLUSTERED ([id] ASC)
+);
+----------------2013-11-19-----------------

@@ -34,7 +34,7 @@ namespace FTPMonitor.DB
                     return DBA.RunSQLStringForUpdate(sqlString);
                 }
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 return -1;
             }

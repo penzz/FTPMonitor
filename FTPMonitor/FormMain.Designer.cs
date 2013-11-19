@@ -41,14 +41,6 @@
             this.btnScanMonitor = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rtbMessage = new System.Windows.Forms.TextBox();
-            this.labelExistCount = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.labelCopyCount = new System.Windows.Forms.Label();
-            this.labelFindCount = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.btnQuery = new System.Windows.Forms.Button();
             this.notifyIconServer = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -67,8 +59,9 @@
             this.tbNorth = new System.Windows.Forms.NumericUpDown();
             this.tbSouth = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tooStatusLabelInfo = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.FSWatcher)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbWest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbEast)).BeginInit();
@@ -76,6 +69,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbNorth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSouth)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // FSWatcher
@@ -142,7 +136,7 @@
             this.tbMonitorFolder.ReadOnly = true;
             this.tbMonitorFolder.Size = new System.Drawing.Size(246, 21);
             this.tbMonitorFolder.TabIndex = 24;
-            this.tbMonitorFolder.Text = "E:\\ftpMain";
+            this.tbMonitorFolder.Text = "D:\\ftpMain";
             // 
             // btnScanMonitor
             // 
@@ -171,90 +165,6 @@
             this.label9.TabIndex = 68;
             this.label9.Text = "到达时间";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rtbMessage);
-            this.groupBox2.Controls.Add(this.labelExistCount);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.labelCopyCount);
-            this.groupBox2.Controls.Add(this.labelFindCount);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(7, 180);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox2.Size = new System.Drawing.Size(542, 330);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "输出消息";
-            // 
-            // rtbMessage
-            // 
-            this.rtbMessage.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.rtbMessage.Location = new System.Drawing.Point(5, 49);
-            this.rtbMessage.Multiline = true;
-            this.rtbMessage.Name = "rtbMessage";
-            this.rtbMessage.ReadOnly = true;
-            this.rtbMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.rtbMessage.Size = new System.Drawing.Size(532, 276);
-            this.rtbMessage.TabIndex = 5;
-            this.rtbMessage.WordWrap = false;
-            // 
-            // labelExistCount
-            // 
-            this.labelExistCount.AutoSize = true;
-            this.labelExistCount.Location = new System.Drawing.Point(444, 23);
-            this.labelExistCount.Name = "labelExistCount";
-            this.labelExistCount.Size = new System.Drawing.Size(11, 12);
-            this.labelExistCount.TabIndex = 4;
-            this.labelExistCount.Text = "0";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(352, 23);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 12);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "存在数据：";
-            // 
-            // labelCopyCount
-            // 
-            this.labelCopyCount.AutoSize = true;
-            this.labelCopyCount.Location = new System.Drawing.Point(251, 23);
-            this.labelCopyCount.Name = "labelCopyCount";
-            this.labelCopyCount.Size = new System.Drawing.Size(11, 12);
-            this.labelCopyCount.TabIndex = 2;
-            this.labelCopyCount.Text = "0";
-            // 
-            // labelFindCount
-            // 
-            this.labelFindCount.AutoSize = true;
-            this.labelFindCount.Location = new System.Drawing.Point(91, 23);
-            this.labelFindCount.Name = "labelFindCount";
-            this.labelFindCount.Size = new System.Drawing.Size(11, 12);
-            this.labelFindCount.TabIndex = 2;
-            this.labelFindCount.Text = "0";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(165, 23);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 12);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "拷贝数据：";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 23);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "找到数据：";
-            // 
             // btnQuery
             // 
             this.btnQuery.Location = new System.Drawing.Point(460, 20);
@@ -278,18 +188,18 @@
             this.toolStripMenuItemShowForm,
             this.toolStripMenuItemCloseForm});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(119, 48);
             // 
             // toolStripMenuItemShowForm
             // 
             this.toolStripMenuItemShowForm.Name = "toolStripMenuItemShowForm";
-            this.toolStripMenuItemShowForm.Size = new System.Drawing.Size(124, 22);
+            this.toolStripMenuItemShowForm.Size = new System.Drawing.Size(118, 22);
             this.toolStripMenuItemShowForm.Text = "显示窗体";
             // 
             // toolStripMenuItemCloseForm
             // 
             this.toolStripMenuItemCloseForm.Name = "toolStripMenuItemCloseForm";
-            this.toolStripMenuItemCloseForm.Size = new System.Drawing.Size(124, 22);
+            this.toolStripMenuItemCloseForm.Size = new System.Drawing.Size(118, 22);
             this.toolStripMenuItemCloseForm.Text = "关闭窗体";
             // 
             // tbWest
@@ -346,10 +256,10 @@
             this.groupBox3.Controls.Add(this.btnScanMonitor);
             this.groupBox3.Controls.Add(this.tbMonitorFolder);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(7, 7);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(5);
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(7);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(542, 56);
+            this.groupBox3.Size = new System.Drawing.Size(556, 56);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "系统启动";
@@ -373,10 +283,10 @@
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.btnScanDest);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox4.Location = new System.Drawing.Point(7, 63);
+            this.groupBox4.Location = new System.Drawing.Point(0, 56);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(542, 117);
+            this.groupBox4.Size = new System.Drawing.Size(556, 117);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "查找复制";
@@ -491,22 +401,35 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "经度范围从";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tooStatusLabelInfo});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 177);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(556, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tooStatusLabelInfo
+            // 
+            this.tooStatusLabelInfo.Name = "tooStatusLabelInfo";
+            this.tooStatusLabelInfo.Size = new System.Drawing.Size(53, 17);
+            this.tooStatusLabelInfo.Text = "系统信息";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 517);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(556, 199);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormMain";
-            this.Padding = new System.Windows.Forms.Padding(7);
             this.Text = "FTP目录监控小程序";
             ((System.ComponentModel.ISupportInitialize)(this.FSWatcher)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tbWest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbEast)).EndInit();
@@ -516,7 +439,10 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbNorth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSouth)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -532,13 +458,6 @@
         private System.Windows.Forms.Button btnScanMonitor;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label labelFindCount;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label labelCopyCount;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label labelExistCount;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NotifyIcon notifyIconServer;
@@ -558,7 +477,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtPhotoTime;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox rtbMessage;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tooStatusLabelInfo;
 
     }
 }

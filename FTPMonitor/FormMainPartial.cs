@@ -23,7 +23,7 @@ namespace FTPMonitor
         FolderBrowserDialog fbd;//文件夹浏览对话框
 
 
-        #region 委托访问控件，使用了多种方式的变体，学习
+        #region method
         /// <summary>
         /// 改变窗体鼠标手势
         /// </summary>
@@ -40,98 +40,13 @@ namespace FTPMonitor
                 this.Cursor = cursor;
             }
         }
-
         /// <summary>
-        /// 添加找到信息
+        /// 将日志显示在状态栏
         /// </summary>
-        /// <param name="msg"></param>
-        public void UpdateFindCount(long count)
-        {
-            if (this.labelFindCount.InvokeRequired)
-            {
-                Action<long> action = UpdateFindCount;
-                labelFindCount.Invoke(action, count);
-            }
-            else
-            {
-                lock (obj)
-                {
-                    this.labelFindCount.Text = count.ToString();
-                    findCount = count;
-                }
-            }
-        }
-        /// <summary>
-        /// 添加拷贝信息
-        /// </summary>
-        /// <param name="msg"></param>
-        public void UpdateCopyCount()
-        {
-            labelCopyCount.Invoke(new Action(UpdateCopyCount2));
-        }
-
-        public void UpdateCopyCount2()
-        {
-            lock (obj)
-            {
-                copyCount++;
-                this.labelCopyCount.Text = copyCount.ToString();
-            }
-        }
-
-        /// <summary>
-        /// 添加存在信息
-        /// </summary>
-        /// <param name="msg"></param>
-        public void UpdateExistCount()
-        {
-            if (this.labelExistCount.InvokeRequired)
-            {
-                labelExistCount.Invoke(new Action(UpdateExistCount));
-            }
-            else
-            {
-                lock (obj)
-                {
-                    existCount++;
-                    labelExistCount.Text = existCount.ToString();
-                }
-            }
-        }
-        #endregion
-
-        #region 日志
+        /// <param name="obj"></param>
         void LogManager_ShowLogEvent(string obj)
         {
-            AddMessage(obj);
-        }
-
-        /// <summary>
-        /// 添加信息委托
-        /// </summary>
-        /// <param name="msg"></param>
-        public void AddMessage(string msg)
-        {
-
-            if (this.rtbMessage.InvokeRequired)
-            {
-                Action<string> action = new Action<string>(AddMessage);
-                rtbMessage.Invoke(action, msg);
-            }
-            else
-            {
-                lock (obj)
-                {
-                    if (this.rtbMessage.Text.Length > 5000)
-                    {
-                        this.rtbMessage.Clear();
-                        rtbMessage.AppendText("[消息]日志信息显示已经刷新,如果要查看历史信息,请查看程序运行目录Logs下的日志文件:log-Message.txt" + Environment.NewLine);
-                    }
-                    //rtbMessage.AppendText(string.Format("[{0:yyyy-MM-dd HH:mm:ss}] {1}{2}", DateTime.Now, msg, Environment.NewLine));
-                    rtbMessage.AppendText(msg);
-                }
-            }
-
+            this.tooStatusLabelInfo.Text = obj;
         }
         #endregion
 
