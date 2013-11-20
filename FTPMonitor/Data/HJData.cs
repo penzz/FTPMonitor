@@ -30,7 +30,7 @@ namespace FTPMonitor
                 dataInfo.PhotoTime = strs[4];
                 dataInfo.FullPath = fullpath;
                 string id = strs[5].Substring(0, strs[5].Length - 7);
-                dataInfo.Id = id + getRandom();
+                dataInfo.Id = id + CC.getRandom();
 
                 return dataInfo;
             }

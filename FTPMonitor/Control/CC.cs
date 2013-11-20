@@ -8,6 +8,7 @@ namespace FTPMonitor
 {
     class CC
     {
+        public static string monitorFolder;
         /// <summary>
         /// 合并参数为字符串
         /// </summary>
@@ -89,5 +90,27 @@ namespace FTPMonitor
             }
             return str;
         }
+
+        #region
+        private static int number = 0;
+        private static object obj = new object();
+        private static Random random = new Random();
+        /// <summary>
+        /// 获得随机编号
+        /// </summary>
+        /// <returns></returns>
+        public static string getRandom()
+        {
+            lock (obj)
+            {
+                DateTime dtnow = DateTime.Now;
+                if (++number >= 10000)
+                {
+                    number = 0;
+                }
+                return string.Format("{0:yyyyMMddHHmmss}{1:000}{2:0000}", dtnow, dtnow.Millisecond, number);
+            }
+        }
+        #endregion
     }
 }

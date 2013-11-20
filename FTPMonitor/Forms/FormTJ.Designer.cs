@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTJ));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbDeleted = new System.Windows.Forms.CheckBox();
             this.btnExport = new System.Windows.Forms.Button();
             this.dtPhotoTime = new System.Windows.Forms.DateTimePicker();
             this.dtCreateTime = new System.Windows.Forms.DateTimePicker();
@@ -40,7 +41,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.bSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgvResult = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,8 +51,8 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pagerControl1 = new PagerLib.PagerControl();
-            this.cbDeleted = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
@@ -77,6 +77,16 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "统计条件";
+            // 
+            // cbDeleted
+            // 
+            this.cbDeleted.AutoSize = true;
+            this.cbDeleted.Location = new System.Drawing.Point(271, 29);
+            this.cbDeleted.Name = "cbDeleted";
+            this.cbDeleted.Size = new System.Drawing.Size(84, 16);
+            this.cbDeleted.TabIndex = 83;
+            this.cbDeleted.Text = "已删除数据";
+            this.cbDeleted.UseVisualStyleBackColor = true;
             // 
             // btnExport
             // 
@@ -169,19 +179,6 @@
             this.dgvResult.Size = new System.Drawing.Size(924, 396);
             this.dgvResult.TabIndex = 0;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dgvResult);
-            this.groupBox2.Controls.Add(this.pagerControl1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 91);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox2.Size = new System.Drawing.Size(934, 446);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "结果";
-            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "id";
@@ -252,6 +249,19 @@
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgvResult);
+            this.groupBox2.Controls.Add(this.pagerControl1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 91);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox2.Size = new System.Drawing.Size(934, 446);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "结果";
+            // 
             // pagerControl1
             // 
             this.pagerControl1.BackColor = System.Drawing.Color.Transparent;
@@ -264,16 +274,6 @@
             this.pagerControl1.Size = new System.Drawing.Size(924, 26);
             this.pagerControl1.TabIndex = 1;
             this.pagerControl1.TotalPage = 0;
-            // 
-            // cbDeleted
-            // 
-            this.cbDeleted.AutoSize = true;
-            this.cbDeleted.Location = new System.Drawing.Point(271, 29);
-            this.cbDeleted.Name = "cbDeleted";
-            this.cbDeleted.Size = new System.Drawing.Size(84, 16);
-            this.cbDeleted.TabIndex = 83;
-            this.cbDeleted.Text = "已删除数据";
-            this.cbDeleted.UseVisualStyleBackColor = true;
             // 
             // FormTJ
             // 

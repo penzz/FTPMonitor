@@ -11,25 +11,6 @@ namespace FTPMonitor
     /// </summary>
     class BaseData
     {
-        private int number = 0;
-        private object obj = new object();
-        private Random random = new Random();
-        /// <summary>
-        /// 获得随机编号
-        /// </summary>
-        /// <returns></returns>
-        protected string getRandom()
-        {
-            lock (obj)
-            {
-                DateTime dtnow = DateTime.Now;
-                if (++number >= 10000)
-                {
-                    number = 0;
-                }
-                return string.Format("{0:yyyyMMddHHmmss}{1:000}{2:0000}", dtnow, dtnow.Millisecond, number);
-            }
-        }
         /// <summary>
         /// 根据全路径获取数据信息
         /// </summary>
@@ -63,7 +44,7 @@ namespace FTPMonitor
                 dataInfo.PhotoTime = strs[4];
                 dataInfo.FullPath = fullpath;
                 string id = strs[5].Substring(0, strs[5].Length - 7);
-                dataInfo.Id = id + getRandom();
+                dataInfo.Id = id + CC.getRandom();
 
                 return dataInfo;
             }

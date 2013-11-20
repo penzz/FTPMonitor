@@ -65,6 +65,10 @@ namespace FTPMonitor.Forms
                 string fullpath = reader["fullpath"].ToString();
                 if (!File.Exists(fullpath))
                 {
+                    if (ReportCopyProgress != null)
+                    {
+                        ReportCopyProgress(new ProgressInfo(MessageType.ERR, name));
+                    }
                     continue;
                 }
                 CopyFileDelegate copyAction = new CopyFileDelegate(CopyFile);

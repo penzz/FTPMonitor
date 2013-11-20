@@ -79,3 +79,5 @@ D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\bin\Debug\log4net.dll
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\bin\Debug\LogLib.dll
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\bin\Debug\PagerLib.dll
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\bin\Debug\LogLib.pdb
+D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.FormFTPMain.resources
+D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.FormStart.resources
