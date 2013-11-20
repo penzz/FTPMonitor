@@ -38,11 +38,7 @@ namespace FTPMonitor
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            FormStart FS = new FormStart();
-            if (FS.ShowDialog()==DialogResult.OK)
-            {
-                Application.Run(new FormFTPMain());
-            }
+            Application.Run(new FormStart());
         }
     }
 }

@@ -30,7 +30,7 @@ namespace LogLib
             stringBuilder.Clear();
             stringBuilder.Append("[" + DateTime.Now.ToString() + "]");
             stringBuilder.Append(" " + messageType.ToString() + ": " + message);
-            //stringBuilder.Append(Environment.NewLine);
+            stringBuilder.Append(Environment.NewLine);
             WriteLogToFile(stringBuilder.ToString());
             ShowLogHandle();
         }

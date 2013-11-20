@@ -106,10 +106,10 @@
     <Compile Include="DB\DataBaseAccess.cs" />
     <Compile Include="DB\DataBaseControl.cs" />
     <Compile Include="Control\DataOperate.cs" />
-    <Compile Include="FormFTPMain.cs">
+    <Compile Include="Forms\FormFTPMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFTPMain.Designer.cs">
+    <Compile Include="Forms\FormFTPMain.Designer.cs">
       <DependentUpon>FormFTPMain.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStart.cs">
@@ -119,12 +119,6 @@
       <DependentUpon>FormStart.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CopyProgress.cs" />
-    <Compile Include="Forms\FormTJ.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormTJ.Designer.cs">
-      <DependentUpon>FormTJ.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\ProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,14 +134,11 @@
     <Compile Include="Model\QueryParameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormFTPMain.resx">
+    <EmbeddedResource Include="Forms\FormFTPMain.resx">
       <DependentUpon>FormFTPMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStart.resx">
       <DependentUpon>FormStart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormTJ.resx">
-      <DependentUpon>FormTJ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProgressForm.resx">
       <DependentUpon>ProgressForm.cs</DependentUpon>
