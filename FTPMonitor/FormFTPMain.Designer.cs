@@ -60,12 +60,12 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pagerControl = new PagerLib.PagerControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemShowForm = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCloseForm = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIconServer = new System.Windows.Forms.NotifyIcon(this.components);
             this.FSWatcher = new System.IO.FileSystemWatcher();
-            this.pagerControl = new PagerLib.PagerControl();
             this.groupBoxTiaojian.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbNorth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSouth)).BeginInit();
@@ -426,6 +426,19 @@
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
             // 
+            // pagerControl
+            // 
+            this.pagerControl.BackColor = System.Drawing.SystemColors.Control;
+            this.pagerControl.CurrentPage = 1;
+            this.pagerControl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pagerControl.Location = new System.Drawing.Point(5, 368);
+            this.pagerControl.Name = "pagerControl";
+            this.pagerControl.RecordCount = 0;
+            this.pagerControl.RowsPerPage = 5;
+            this.pagerControl.Size = new System.Drawing.Size(802, 24);
+            this.pagerControl.TabIndex = 2;
+            this.pagerControl.TotalPage = 0;
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -462,19 +475,6 @@
             | System.IO.NotifyFilters.LastAccess)));
             this.FSWatcher.SynchronizingObject = this;
             // 
-            // pagerControl
-            // 
-            this.pagerControl.BackColor = System.Drawing.SystemColors.Control;
-            this.pagerControl.CurrentPage = 0;
-            this.pagerControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pagerControl.Location = new System.Drawing.Point(5, 368);
-            this.pagerControl.Name = "pagerControl";
-            this.pagerControl.RecordCount = 0;
-            this.pagerControl.RowsPerPage = 5;
-            this.pagerControl.Size = new System.Drawing.Size(802, 24);
-            this.pagerControl.TabIndex = 2;
-            this.pagerControl.TotalPage = 0;
-            // 
             // FormFTPMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -482,9 +482,10 @@
             this.ClientSize = new System.Drawing.Size(822, 494);
             this.Controls.Add(this.groupBoxResult);
             this.Controls.Add(this.groupBoxTiaojian);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormFTPMain";
             this.Padding = new System.Windows.Forms.Padding(5);
-            this.Text = "FormFTPMain";
+            this.Text = "FTP监控小程序";
             this.groupBoxTiaojian.ResumeLayout(false);
             this.groupBoxTiaojian.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbNorth)).EndInit();

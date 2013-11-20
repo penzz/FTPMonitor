@@ -64,8 +64,6 @@ D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\bin\Debug\FTPMonitor.exe.co
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.exe
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.pdb
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.csprojResolveAssemblyReference.cache
-D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.FormMain.resources
-D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.Forms.FormTongJi.resources
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.FormTJ.resources
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.Forms.ProgressForm.resources
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.Properties.Resources.resources

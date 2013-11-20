@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStart));
             this.label5 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnScanMonitor = new System.Windows.Forms.Button();
@@ -110,6 +111,7 @@
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.btnScanMonitor);
             this.Controls.Add(this.tbMonitorFolder);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormStart";

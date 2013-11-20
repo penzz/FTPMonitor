@@ -102,7 +102,6 @@
     <Compile Include="Data\HJData.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Control\CC.cs" />
-    <Compile Include="Control\FileOperate.cs" />
     <Compile Include="Data\ZYData.cs" />
     <Compile Include="DB\DataBaseAccess.cs" />
     <Compile Include="DB\DataBaseControl.cs" />
@@ -113,15 +112,6 @@
     <Compile Include="FormFTPMain.Designer.cs">
       <DependentUpon>FormFTPMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormMainPartial.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FormStart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,12 +119,6 @@
       <DependentUpon>FormStart.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CopyProgress.cs" />
-    <Compile Include="Forms\FormTongJi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormTongJi.Designer.cs">
-      <DependentUpon>FormTongJi.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormTJ.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,14 +143,8 @@
     <EmbeddedResource Include="FormFTPMain.resx">
       <DependentUpon>FormFTPMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormStart.resx">
       <DependentUpon>FormStart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormTongJi.resx">
-      <DependentUpon>FormTongJi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormTJ.resx">
       <DependentUpon>FormTJ.cs</DependentUpon>
