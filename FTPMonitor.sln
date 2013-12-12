@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTPMonitor", "FTPMonitor\FT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLib", "LogLib\LogLib.csproj", "{ADC3920F-9998-4EBE-BD3A-62EA941A1D91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPro", "TestPro\TestPro.csproj", "{10F3BA06-4661-4DC7-B995-F1604B633DC5}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 2
@@ -44,6 +46,16 @@ Global
 		{ADC3920F-9998-4EBE-BD3A-62EA941A1D91}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{ADC3920F-9998-4EBE-BD3A-62EA941A1D91}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{ADC3920F-9998-4EBE-BD3A-62EA941A1D91}.Release|x86.ActiveCfg = Release|Any CPU
+		{10F3BA06-4661-4DC7-B995-F1604B633DC5}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{10F3BA06-4661-4DC7-B995-F1604B633DC5}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{10F3BA06-4661-4DC7-B995-F1604B633DC5}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{10F3BA06-4661-4DC7-B995-F1604B633DC5}.Debug|x86.ActiveCfg = Debug|x86
+		{10F3BA06-4661-4DC7-B995-F1604B633DC5}.Debug|x86.Build.0 = Debug|x86
+		{10F3BA06-4661-4DC7-B995-F1604B633DC5}.Release|Any CPU.ActiveCfg = Release|x86
+		{10F3BA06-4661-4DC7-B995-F1604B633DC5}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{10F3BA06-4661-4DC7-B995-F1604B633DC5}.Release|Mixed Platforms.Build.0 = Release|x86
+		{10F3BA06-4661-4DC7-B995-F1604B633DC5}.Release|x86.ActiveCfg = Release|x86
+		{10F3BA06-4661-4DC7-B995-F1604B633DC5}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -78,3 +78,22 @@ D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\bin\Debug\PagerLib.dll
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\bin\Debug\LogLib.pdb
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.FormFTPMain.resources
 D:\Visual Studio 2012\Projects\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.FormStart.resources
+D:\VisualStudio\FTPMonitor\FTPMonitor\bin\Debug\GFDataBase.mdf
+D:\VisualStudio\FTPMonitor\FTPMonitor\bin\Debug\GFDataBase_log.ldf
+D:\VisualStudio\FTPMonitor\FTPMonitor\bin\Debug\log4net.config
+D:\VisualStudio\FTPMonitor\FTPMonitor\bin\Debug\FTPMonitor.exe.config
+D:\VisualStudio\FTPMonitor\FTPMonitor\bin\Debug\FTPMonitor.exe
+D:\VisualStudio\FTPMonitor\FTPMonitor\bin\Debug\FTPMonitor.pdb
+D:\VisualStudio\FTPMonitor\FTPMonitor\bin\Debug\log4net.dll
+D:\VisualStudio\FTPMonitor\FTPMonitor\bin\Debug\LogLib.dll
+D:\VisualStudio\FTPMonitor\FTPMonitor\bin\Debug\PagerLib.dll
+D:\VisualStudio\FTPMonitor\FTPMonitor\bin\Debug\LogLib.pdb
+D:\VisualStudio\FTPMonitor\FTPMonitor\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\VisualStudio\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.FormFTPMain.resources
+D:\VisualStudio\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.FormStart.resources
+D:\VisualStudio\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.Forms.ProgressForm.resources
+D:\VisualStudio\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.Properties.Resources.resources
+D:\VisualStudio\FTPMonitor\FTPMonitor\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\VisualStudio\FTPMonitor\FTPMonitor\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\VisualStudio\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.exe
+D:\VisualStudio\FTPMonitor\FTPMonitor\obj\x86\Debug\FTPMonitor.pdb

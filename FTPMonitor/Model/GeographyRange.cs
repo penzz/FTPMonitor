@@ -5,15 +5,14 @@ using System.Text;
 
 namespace FTPMonitor.Model
 {
-    struct QueryParameter
+    /// <summary>
+    /// 经纬度范围
+    /// </summary>
+    struct GeographyRange
     {
         public double eastLon;
         public double westLon;
         public double southLat;
         public double northLat;
-        public string photoTime;
-        public string createTime;
-        public bool hasDelete;
-        public bool isToday;
     }
 }

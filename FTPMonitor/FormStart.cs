@@ -10,18 +10,19 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 namespace FTPMonitor
 {
     public partial class FormStart : Form
     {
         #region Property
-        object obj = new object();//多线程锁对象
+        object obj = new object();//线程同步锁
         FormFTPMain ftpForm;
         string monitorFolder = "";
         List<string> CurrentCopyFile;//保持当前正在推送的数据对象
-        private static bool isRun;
-        long loadSum;
+        private static bool isRun;//当前系统已经运行
+        readonly string WATCHPATTERN = "*.tar.gz";//监视文件匹配符
         #endregion
 
         #region 系统
@@ -59,7 +60,7 @@ namespace FTPMonitor
         {
             if (!isRun)
             {
-                DialogResult dr = MessageBox.Show(this,"系统尚未系统，检索到的结果可能不是最新数据，是否仍然检索？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult dr = MessageBox.Show(this, "系统尚未系统，检索到的结果可能不是最新数据，是否仍然检索？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dr != DialogResult.OK)
                 {
                     return;
@@ -244,29 +245,30 @@ namespace FTPMonitor
                 MessageBox.Show("程序初始化出错，无法置位数据库：！");
                 return;
             }
-            loadSum = 0;
             LogManager.AddMessage(MessageType.INFO, "开始扫描数据... ...");
             //遍历文件夹将存在的数据设置存在
-            Action<DirectoryInfo> delegateTraverse = TraverseDir;
-            delegateTraverse.BeginInvoke(new DirectoryInfo(monitorFolder), new AsyncCallback(CallBackTraverse), delegateTraverse);
-
+            Func<string, long> funcTraverse = ParallelTraverseDir;
+            funcTraverse.BeginInvoke(monitorFolder, new AsyncCallback(CallBackTraverse), funcTraverse);
         }
-
         /// <summary>
         /// 回调函数，加载完数据后续操作
         /// </summary>
         /// <param name="iasync"></param>
         private void CallBackTraverse(IAsyncResult iasync)
         {
+            Func<string, long> funcTraverse = (Func<string, long>)iasync.AsyncState;
+            long loadSum = funcTraverse.EndInvoke(iasync);
             LogManager.AddMessage(MessageType.INFO, string.Format("初始化完成，共加载【{0}】条数据", loadSum));
+
             CurrentCopyFile = new List<string>();
             this.FSWatcher.Path = monitorFolder;
             this.FSWatcher.IncludeSubdirectories = true;
-            this.FSWatcher.Filter = "*.tar.gz";
+            this.FSWatcher.Filter = WATCHPATTERN;
         }
 
+        #region 废弃方法
         /// <summary>
-        /// 加载已有数据
+        /// 递归加载已有数据，已废弃
         /// </summary>
         /// <param name="dir"></param>
         private void TraverseDir(DirectoryInfo dir)
@@ -278,14 +280,77 @@ namespace FTPMonitor
             foreach (FileInfo file in dir.GetFiles())
             {
                 int count = DataOperate.GetInstance().UpdateOrInsertData(file.Name, file.FullName);
-                if (count < 0)
+                if (count <= 0)
                 {
-                    string str = new StringBuilder().AppendFormat("加载已有数据{0}入库错误", file.Name).ToString();
+                    string str = new StringBuilder().AppendFormat("加载已有数据【{0}】入库错误", file.Name).ToString();
                     LogManager.AddMessage(MessageType.ERR, str);
                     continue;
                 }
-                loadSum++;
+                //loadSum++;
             }
+        }
+        /// <summary>
+        /// 非递归加载已有数据,已废弃
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private long TraverseDir(string path)
+        {
+            IEnumerable<string> fileList = Directory.EnumerateFiles(path, WATCHPATTERN, SearchOption.AllDirectories);
+            long loadSum = fileList.Count();
+            string[] infos;
+            string fileName;
+            foreach (string fileFullPath in fileList)
+            {
+                infos = fileFullPath.Split('\\');
+                int length = infos.Length;
+                fileName = infos[length - 1];
+                int count = DataOperate.GetInstance().UpdateOrInsertData(fileName, fileFullPath);
+                if (count <= 0)
+                {
+                    string str = new StringBuilder().AppendFormat("加载已有数据【{0}】入库错误", fileFullPath).ToString();
+                    LogManager.AddMessage(MessageType.ERR, str);
+                    Interlocked.Decrement(ref loadSum);
+                }
+            }
+            return loadSum;
+        }
+        #endregion
+
+        /// <summary>
+        /// 非递归并行加载已有数据
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private long ParallelTraverseDir(string path)
+        {
+            IEnumerable<string> fileList = Directory.EnumerateFiles(path, WATCHPATTERN, SearchOption.AllDirectories);
+            long loadSum = 0;
+            string[] infos;
+            string fileName;
+            Parallel.ForEach<string, long>(
+                fileList,
+                () => { return 0; },
+                (fileFullPath, loopState, index, localTotal) =>
+                {
+                    infos = fileFullPath.Split('\\');
+                    int length = infos.Length;
+                    fileName = infos[length - 1];
+                    int count = DataOperate.GetInstance().UpdateOrInsertData(fileName, fileFullPath);
+                    if (count <= 0)
+                    {
+                        string str = new StringBuilder().AppendFormat("加载已有数据【{0}】入库错误", fileFullPath).ToString();
+                        LogManager.AddMessage(MessageType.ERR, str);
+                        return localTotal;
+                    }
+                    Interlocked.Increment(ref localTotal);
+                    return localTotal;
+                },
+                localTotal =>
+                {
+                    Interlocked.Add(ref loadSum, localTotal);
+                });
+            return loadSum;
         }
         #endregion
 

@@ -16,11 +16,11 @@ namespace FTPMonitor.Forms
     /// </summary>
     public partial class ProgressForm : Form
     {
-        private object obj = new object();
+        private object obj = new object();//线程同步锁
         private int count;
         private CopyProgress copyProgress;
         private StringBuilder stringBuilder = new StringBuilder();
-        private readonly string recordName = "\\record.txt";
+        private readonly string recordName = "record.txt";
         private string recordPath;
         public ProgressForm()
         {
@@ -36,11 +36,11 @@ namespace FTPMonitor.Forms
             InitializeComponent();
             this.count = count;
             this.copyProgress = copyProgress;
-            recordPath = this.copyProgress.destFolder + recordName;
+            recordPath = Path.Combine(this.copyProgress.destFolder, recordName);
             this.labelInfo.Text = "0%";
             this.progressBar.Minimum = 0;
             this.progressBar.Maximum = count;
-            copyProgress.ReportCopyProgress += new Action<ProgressInfo>(copyProgress_ReportCopyProgress);
+            copyProgress.ReportCopyProgress += new EventHandler<ProgressInfoEventArgs>(copyProgress_ReportCopyProgress);
             this.Shown += new EventHandler(ProgressForm_Shown);
             this.FormClosing += new FormClosingEventHandler(ProgressForm_FormClosing);
         }
@@ -62,45 +62,43 @@ namespace FTPMonitor.Forms
         {
             copyProgress.StartCopy();
             this.groupBox1.Text = "正在复制...";
-            WriteRecord(DateTime.Now.ToString() + "总计:" + count.ToString() + "条数据，详细清单：", recordPath);
+            WriteRecord(CC.CombineParams(DateTime.Now.ToString(), "总计:", count.ToString(), "条数据，详细清单："), recordPath);
         }
         /// <summary>
         /// 计算复制进度
         /// </summary>
-        /// <param name="progressInfo"></param>
-        void copyProgress_ReportCopyProgress(ProgressInfo progressInfo)
+        void copyProgress_ReportCopyProgress(object sender, ProgressInfoEventArgs e)
         {
             if (this.progressBar.InvokeRequired)
             {
-                Action<ProgressInfo> action = new Action<ProgressInfo>(copyProgress_ReportCopyProgress);
-                this.progressBar.Invoke(action, progressInfo);
+                Action<object, ProgressInfoEventArgs> action = new Action<object, ProgressInfoEventArgs>(copyProgress_ReportCopyProgress);
+                this.progressBar.Invoke(action, sender, e);
             }
             else
             {
-                lock (obj)
+                try
                 {
-                    try
+                    stringBuilder.Clear();
+                    stringBuilder.Append("[" + DateTime.Now.ToString() + "]");
+                    stringBuilder.Append(" " + e.MT.ToString() + ": " + e.Name);
+                    stringBuilder.Append(Environment.NewLine);
+                    this.textBox1.AppendText(stringBuilder.ToString());
+
+                    string filename = e.Name;
+                    if (e.MT == MessageType.EXIST)
                     {
-                        stringBuilder.Clear();
-                        stringBuilder.Append("[" + DateTime.Now.ToString() + "]");
-                        stringBuilder.Append(" " + progressInfo.MT.ToString() + ": " + progressInfo.name);
-                        stringBuilder.Append(Environment.NewLine);
-                        this.textBox1.AppendText(stringBuilder.ToString());
-
-                        string filename = progressInfo.name;
-                        if (progressInfo.MT == MessageType.EXIST)
-                        {
-                            filename += " 已经存在";
-                        }
+                        filename += " 已经存在";
+                    }
+                    lock (obj)
+                    {
                         WriteRecord(filename, recordPath);
-
                         this.progressBar.Value += 1;
                         double value = this.progressBar.Value * 1.0 / count * 100;
                         this.labelInfo.Text = string.Format("{0:.00}%", value);
                     }
-                    catch (Exception)
-                    {
-                    }
+                }
+                catch (Exception)
+                {
                 }
             }
         }

@@ -69,7 +69,7 @@ namespace FTPMonitor
         }
 
         /// <summary>
-        /// 增加新数据
+        /// 增加新数据,已废弃
         /// </summary>
         /// <param name="dataInfo"></param>
         public void LoadOneData(DataInfo dataInfo)
@@ -112,7 +112,7 @@ namespace FTPMonitor
                 DataInfo datainfo = DataFactory.CreateDataInfo(name, fullpath);
                 if (datainfo == null)
                 {
-                    return Int32.MaxValue;
+                    return 0;
                 }
                 count = InsertData(datainfo);
             }

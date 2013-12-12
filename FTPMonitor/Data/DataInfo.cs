@@ -116,7 +116,7 @@ namespace FTPMonitor
         /// <returns></returns>
         public override string ToString()
         {
-            return CC.MergeParams('@', name, photoTime, createTime, fullPath);
+            return CC.CombineParams('@', name, photoTime, createTime, fullPath);
         }
     }
 }

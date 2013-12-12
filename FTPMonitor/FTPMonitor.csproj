@@ -125,23 +125,28 @@
     <Compile Include="Forms\ProgressForm.Designer.cs">
       <DependentUpon>ProgressForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\DataInfo.cs" />
+    <Compile Include="Forms\ProgressInfoEventArgs.cs" />
     <Compile Include="GFDataBaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GFDataBaseDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Data\DataInfo.cs" />
+    <Compile Include="Model\GeographyRange.cs" />
     <Compile Include="Model\QueryParameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FormFTPMain.resx">
       <DependentUpon>FormFTPMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStart.resx">
       <DependentUpon>FormStart.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProgressForm.resx">
       <DependentUpon>ProgressForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -198,8 +203,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="GFDataBase_log.ldf">
-      <DependentUpon>GFDataBase.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>GFDataBase.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

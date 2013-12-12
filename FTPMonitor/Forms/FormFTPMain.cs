@@ -20,7 +20,6 @@ namespace FTPMonitor
     {
         #region Property
         public static FormFTPMain Current;//当前主窗体实例
-        QueryParameter queryPara;
         DataTable datatable;//保存每页显示的数据
         string criteria;//检索时构成的条件
         #endregion
@@ -80,6 +79,8 @@ namespace FTPMonitor
             {
                 destFolder = fbd.SelectedPath;
             }
+            else
+                return;
             int count = this.pagerControl.RecordCount;
             DialogResult dr = MessageBox.Show("是否将检索到的【" + count + "】条数据复制到目录：" + destFolder + "中？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (dr != DialogResult.OK || string.IsNullOrEmpty(destFolder) || count == 0)
@@ -114,6 +115,11 @@ namespace FTPMonitor
             //将得到的记录绑定到DataGridView显示给用户
             this.dgvResult.DataSource = datatable.DefaultView;
         }
+        private void QueryAndBinding(QueryParameter queryPara)
+        {
+            criteria = DataHelper.GetCriteria(queryPara);
+            QueryAndBinding(criteria);
+        }
         #endregion
 
         #region 今天数据
@@ -124,12 +130,11 @@ namespace FTPMonitor
         /// <param name="e"></param>
         void btnToday_Click(object sender, EventArgs e)
         {
-            queryPara = new QueryParameter();
+            QueryParameter queryPara = new QueryParameter();
             queryPara.isToday = true;
             queryPara.createTime = DateTime.Now.ToString();
             queryPara.hasDelete = cbDeleted.Checked;
-            criteria = DataHelper.GetCriteria(queryPara);
-            QueryAndBinding(criteria);
+            QueryAndBinding(queryPara);
         }
         #endregion
 
@@ -139,29 +144,13 @@ namespace FTPMonitor
         /// 初始化系统变量并验证其正确性
         /// </summary>
         /// <returns></returns>
-        bool VerifyVariable()
+        QueryParameter VerifyVariable()
         {
-            queryPara = new QueryParameter();
-            if (!double.TryParse(this.tbEast.Text, out queryPara.eastLon))
-            {
-                MessageBox.Show("经度范围结束值有错误，请重新输入！");
-                return false;
-            }
-            if (!double.TryParse(this.tbWest.Text, out queryPara.westLon))
-            {
-                MessageBox.Show("经度范围开始值有错误，请重新输入！");
-                return false;
-            }
-            if (!double.TryParse(this.tbSouth.Text, out queryPara.southLat))
-            {
-                MessageBox.Show("纬度范围开始值有错误，请重新输入！");
-                return false;
-            }
-            if (!double.TryParse(this.tbNorth.Text, out queryPara.northLat))
-            {
-                MessageBox.Show("纬度范围结束值输入有错误，请重新输入！");
-                return false;
-            }
+            QueryParameter queryPara = new QueryParameter();
+            queryPara.eastLon = double.Parse(this.tbEast.Text);
+            queryPara.westLon = double.Parse(this.tbWest.Text);
+            queryPara.southLat = double.Parse(this.tbSouth.Text);
+            queryPara.northLat = double.Parse(this.tbNorth.Text);
             if (this.dtPhotoTime.Checked)
             {
                 DateTime dt = DateTime.Parse(this.dtPhotoTime.Text);
@@ -172,7 +161,7 @@ namespace FTPMonitor
                 queryPara.createTime = this.dtCreateTime.Text;
             }
             queryPara.hasDelete = cbDeleted.Checked;
-            return true;
+            return queryPara;
         }
 
         /// <summary>
@@ -182,12 +171,8 @@ namespace FTPMonitor
         /// <param name="e"></param>
         void btnQuery_Click(object sender, EventArgs e)
         {
-            if (!VerifyVariable())
-            {
-                return;
-            }
-            criteria = DataHelper.GetCriteria(queryPara);
-            QueryAndBinding(criteria);
+            QueryParameter queryPara = VerifyVariable();
+            QueryAndBinding(queryPara);
         }
 
         #endregion
@@ -200,6 +185,11 @@ namespace FTPMonitor
         /// <param name="e"></param>
         void btnExport_Click(object sender, EventArgs e)
         {
+            if (this.pagerControl.RecordCount == 0 || this.datatable.Rows.Count <= 0)
+            {
+                MessageBox.Show("没有可以导出的数据信息！");
+                return;
+            }
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "*.xlsx|*.xlsx";
             if (sfd.ShowDialog() == DialogResult.OK)
@@ -212,11 +202,6 @@ namespace FTPMonitor
         /// </summary>
         private void ExportDataInfo(string exportFilePath)
         {
-            if (this.pagerControl.RecordCount == 0 || this.datatable.Rows.Count <= 0)
-            {
-                MessageBox.Show("没有可以导出的数据信息！");
-                return;
-            }
             if (string.IsNullOrEmpty(exportFilePath))
             {
                 MessageBox.Show("请点击【导出到文件】按钮选择文件路径！");

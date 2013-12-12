@@ -37,12 +37,12 @@
             this.notifyIconServer = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemShowForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemQueryData = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCloseForm = new System.Windows.Forms.ToolStripMenuItem();
             this.FSWatcher = new System.IO.FileSystemWatcher();
             this.btnOperate = new System.Windows.Forms.Button();
             this.rtbMessage = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ToolStripMenuItemQueryData = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FSWatcher)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -82,7 +82,7 @@
             this.tbMonitorFolder.ReadOnly = true;
             this.tbMonitorFolder.Size = new System.Drawing.Size(246, 21);
             this.tbMonitorFolder.TabIndex = 32;
-            this.tbMonitorFolder.Text = "D:\\ftpMain";
+            this.tbMonitorFolder.Text = "E:\\ftpMain";
             // 
             // notifyIconServer
             // 
@@ -106,6 +106,12 @@
             this.toolStripMenuItemShowForm.Name = "toolStripMenuItemShowForm";
             this.toolStripMenuItemShowForm.Size = new System.Drawing.Size(118, 22);
             this.toolStripMenuItemShowForm.Text = "显示窗体";
+            // 
+            // ToolStripMenuItemQueryData
+            // 
+            this.ToolStripMenuItemQueryData.Name = "ToolStripMenuItemQueryData";
+            this.ToolStripMenuItemQueryData.Size = new System.Drawing.Size(118, 22);
+            this.ToolStripMenuItemQueryData.Text = "检索数据";
             // 
             // toolStripMenuItemCloseForm
             // 
@@ -154,12 +160,6 @@
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "系统信息";
-            // 
-            // ToolStripMenuItemQueryData
-            // 
-            this.ToolStripMenuItemQueryData.Name = "ToolStripMenuItemQueryData";
-            this.ToolStripMenuItemQueryData.Size = new System.Drawing.Size(118, 22);
-            this.ToolStripMenuItemQueryData.Text = "检索数据";
             // 
             // FormStart
             // 

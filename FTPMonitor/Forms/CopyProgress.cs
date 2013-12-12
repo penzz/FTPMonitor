@@ -11,26 +11,6 @@ using System.Threading;
 namespace FTPMonitor.Forms
 {
     /// <summary>
-    /// 上报进度的信息
-    /// </summary>
-    public class ProgressInfo
-    {
-        /// <summary>
-        /// 信息类型
-        /// </summary>
-        public MessageType MT { get; set; }
-        /// <summary>
-        /// 复制完成的数据名
-        /// </summary>
-        public string name { get; set; }
-
-        public ProgressInfo(MessageType MT, string name)
-        {
-            this.MT = MT;
-            this.name = name;
-        }
-    }
-    /// <summary>
     /// 完成复制的类
     /// </summary>
     public class CopyProgress
@@ -38,9 +18,8 @@ namespace FTPMonitor.Forms
         /// <summary>
         /// 上报进度事件，供外部注册计算
         /// </summary>
-        public event Action<ProgressInfo> ReportCopyProgress;
-        private delegate ProgressInfo CopyFileDelegate(string name, string fullpath);
-        private static object obj = new object();
+        public event EventHandler<ProgressInfoEventArgs> ReportCopyProgress;
+        private static object obj = new object();//线程同步锁
         public string destFolder;
         string append;
 
@@ -49,7 +28,9 @@ namespace FTPMonitor.Forms
             this.destFolder = destFolder;
             this.append = append;
         }
-
+        /// <summary>
+        /// 开始复制过程，外部调用
+        /// </summary>
         public void StartCopy()
         {
             if (!Directory.Exists(destFolder))
@@ -65,17 +46,27 @@ namespace FTPMonitor.Forms
                 string fullpath = reader["fullpath"].ToString();
                 if (!File.Exists(fullpath))
                 {
-                    if (ReportCopyProgress != null)
-                    {
-                        ReportCopyProgress(new ProgressInfo(MessageType.ERR, name));
-                    }
+                    ProgressInfoEventArgs e = new ProgressInfoEventArgs(MessageType.ERR, name);
+                    OnReportCopyProgress(e);
                     continue;
                 }
-                CopyFileDelegate copyAction = new CopyFileDelegate(CopyFile);
+                Func<string, string, ProgressInfoEventArgs> copyAction = CopyFile;
                 copyAction.BeginInvoke(name, fullpath, new AsyncCallback(CopyFileCallBack), copyAction);
             }
             reader.Close();
             DataBaseControl.CloseConnection();
+        }
+        /// <summary>
+        /// 触发上报进度事件
+        /// </summary>
+        /// <param name="e"></param>
+        private void OnReportCopyProgress(ProgressInfoEventArgs e)
+        {
+            EventHandler<ProgressInfoEventArgs> temp = Interlocked.CompareExchange(ref ReportCopyProgress, null, null);
+            if (temp != null)
+            {
+                temp(this, e);
+            }
         }
 
         #region 操作文件
@@ -83,16 +74,17 @@ namespace FTPMonitor.Forms
         /// 将数据从FTP监控目录复制到目标目录
         /// </summary>
         /// <param name="datainfo"></param>
-        private ProgressInfo CopyFile(string name, string fullpath)
+        private ProgressInfoEventArgs CopyFile(string name, string fullpath)
         {
-            if (!File.Exists(destFolder + "\\" + name))
+            string destFullPath = Path.Combine(destFolder, name);
+            if (!File.Exists(destFullPath))
             {
                 bool isCanCopy = false;
                 while (!isCanCopy)
                 {
                     try
                     {
-                        File.Copy(fullpath, destFolder + "\\" + name, true);
+                        File.Copy(fullpath, destFullPath, true);
                         isCanCopy = true;
                     }
                     catch (Exception)
@@ -100,11 +92,11 @@ namespace FTPMonitor.Forms
                         Thread.Sleep(1000);
                     }
                 }
-                return new ProgressInfo(MessageType.COPY, name);
+                return new ProgressInfoEventArgs(MessageType.COPY, name);
             }
             else
             {
-                return new ProgressInfo(MessageType.EXIST, name);
+                return new ProgressInfoEventArgs(MessageType.EXIST, name);
             }
         }
         /// <summary>
@@ -113,12 +105,9 @@ namespace FTPMonitor.Forms
         /// <param name="iasync"></param>
         private void CopyFileCallBack(IAsyncResult iasync)
         {
-            CopyFileDelegate copyAction = (CopyFileDelegate)iasync.AsyncState;
-            ProgressInfo progressInfo = copyAction.EndInvoke(iasync);
-            if (ReportCopyProgress != null)
-            {
-                ReportCopyProgress(progressInfo);
-            }
+            Func<string, string, ProgressInfoEventArgs> copyAction = (Func<string, string, ProgressInfoEventArgs>)iasync.AsyncState;
+            ProgressInfoEventArgs e = copyAction.EndInvoke(iasync);
+            OnReportCopyProgress(e);
         }
         /// <summary>
         /// 向文件中写记录

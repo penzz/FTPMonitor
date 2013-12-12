@@ -31,7 +31,12 @@ namespace FTPMonitor.Data
         /// <returns>数据元信息</returns>
         public static DataInfo CreateDataInfo(string dataName, string fullPath)
         {
-            return CreateDataIntance(dataName).GetDataInfo(fullPath);
+            BaseData baseData = CreateDataIntance(dataName);
+            if (baseData == null)
+            {
+                return null;
+            }
+            return baseData.GetDataInfo(fullPath);
         }
     }
 }

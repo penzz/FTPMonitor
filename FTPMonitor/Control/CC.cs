@@ -15,14 +15,29 @@ namespace FTPMonitor
         /// <param name="fix">分隔符</param>
         /// <param name="str">参数列表</param>
         /// <returns></returns>
-        public static string MergeParams(char fix, params string[] str)
+        public static string CombineParams(char fix, params string[] str)
         {
-            string result = "";
+            StringBuilder result = new StringBuilder();
             foreach (var item in str)
             {
-                result += item + fix;
+                result.Append(item);
+                result.Append(fix);
             }
-            return result.Substring(0, result.Length - 1);
+            return result.ToString().Substring(0, result.Length - 1);
+        }
+        /// <summary>
+        /// 合并参数为字符串
+        /// </summary>
+        /// <param name="str">参数列表</param>
+        /// <returns></returns>
+        public static string CombineParams(params string[] str)
+        {
+            StringBuilder result = new StringBuilder();
+            foreach (var item in str)
+            {
+                result.Append(item);
+            }
+            return result.ToString();
         }
         /// <summary>
         /// 获取经纬度条件的sql语句

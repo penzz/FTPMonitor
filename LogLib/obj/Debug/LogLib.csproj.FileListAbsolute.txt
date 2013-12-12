@@ -9,3 +9,9 @@ D:\Visual Studio 2012\Projects\FTPMonitor\LogLib\bin\Debug\LogLib.pdb
 D:\Visual Studio 2012\Projects\FTPMonitor\LogLib\bin\Debug\log4net.dll
 D:\Visual Studio 2012\Projects\FTPMonitor\LogLib\obj\Debug\LogLib.dll
 D:\Visual Studio 2012\Projects\FTPMonitor\LogLib\obj\Debug\LogLib.pdb
+D:\VisualStudio\FTPMonitor\LogLib\bin\Debug\LogLib.dll
+D:\VisualStudio\FTPMonitor\LogLib\bin\Debug\LogLib.pdb
+D:\VisualStudio\FTPMonitor\LogLib\bin\Debug\log4net.dll
+D:\VisualStudio\FTPMonitor\LogLib\obj\Debug\ResolveAssemblyReference.cache
+D:\VisualStudio\FTPMonitor\LogLib\obj\Debug\LogLib.dll
+D:\VisualStudio\FTPMonitor\LogLib\obj\Debug\LogLib.pdb
